@@ -51,19 +51,21 @@ El alcance de esta primera entrega se limita al diseño y construcción del mode
 ![Diagrama_relacional](https://github.com/RiosKaren/BDD_Proyecto_estudio_Grupo14/tree/main/doc/image_relational.png)
 
 ### Diagrama conceptual (opcional)
-Ejemplo usando Live Editor https://mermaid.js.org/ (ejemplo opcional)
+Ejemplo usando Live Editor https://mermaid.js.org/
 ```mermaid
 erDiagram
-    Usuario ||--o{ Materia : tiene
-    Usuario ||--o{ Pomodoro : realiza
-    Usuario ||--o{ Progreso : alcanza
-    Usuario }o--|| TipoUsuario : tiene
+    Usuario ||--o{ Materia : "tiene"
+    Usuario ||--o{ Pomodoro : "realiza"
+    Usuario ||--o{ Progreso : "alcanza"
+    Usuario }o--|| TipoUsuario : "tiene"
 
-    Materia ||--o{ Apunte : contiene
-    Materia ||--o{ Examen : evalua
-    Materia ||--o{ Progreso : "esta en"
+    Materia ||--o{ Apunte : "contiene"
+    Materia ||--o{ Examen : "evalúa"
+    Materia ||--o{ Progreso : "está en"
 
-    Apunte ||--o{ Flashcard : genera
+    Apunte ||--o{ Flashcard : "genera"
+
+```
 
 ### Diccionario de datos
 
