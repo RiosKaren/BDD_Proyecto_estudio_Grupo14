@@ -69,5 +69,5 @@ erDiagram
 
 ### Diccionario de datos
 
-Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos.
+Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos. 
 
