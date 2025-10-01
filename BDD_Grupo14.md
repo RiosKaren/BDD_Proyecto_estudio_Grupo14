@@ -50,7 +50,7 @@ El alcance de esta primera entrega se limita al diseño y construcción del mode
 ### Diagrama relacional
 ![Diagrama_relacional](https://github.com/RiosKaren/BDD_Proyecto_estudio_Grupo14/tree/main/doc/image_relational.png)
 
-### Diagrama conceptual (opcional)
+### Diagrama conceptual 
 Ejemplo usando Live Editor https://mermaid.js.org/
 ```mermaid
 erDiagram
