@@ -15,9 +15,9 @@
 
 ### Año de Cursado: 2025
 
-## CAPÍTULO I: INTRODUCCIÓN
+# CAPÍTULO I: INTRODUCCIÓN
 
-### 1.1 INTRODUCCIÓN
+## 1.1 INTRODUCCIÓN
 
 El presente proyecto propone el diseño e implementación de un sistema académico integral denominado StudIA. Este sistema busca centralizar múltiples funcionalidades de apoyo al aprendizaje, como la gestión de materias, apuntes digitales, flashcards, simulacros de exámenes, sesiones Pomodoro y seguimiento del progreso académico. De esta forma, se pretende resolver la fragmentación que actualmente sufren los estudiantes al utilizar diversas aplicaciones dispersas, ofreciendo una solución unificada y respaldada por una base de datos relacional sólida y segura.
 
@@ -46,9 +46,9 @@ Diseñar e implementar un modelo de datos relacional que respalde el sistema Stu
 El alcance de esta primera entrega se limita al diseño y construcción del modelo de base de datos. Se incluyen el diagrama entidad-relación, el diccionario de datos y la definición de restricciones. Quedan fuera de alcance, en esta etapa, la implementación de la interfaz de usuario, la integración de algoritmos de inteligencia artificial y funcionalidades adicionales.
 
 
-## CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 
+# CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 
 ### Diagrama relacional
-![Diagrama_relacional](https://github.com/RiosKaren/BDD_Proyecto_estudio_Grupo14/tree/main/doc/image_relational.png)
+![Diagrama_relacional](doc/image_relational.png)
 
 ### Diagrama conceptual 
 Ejemplo usando Live Editor https://mermaid.js.org/
