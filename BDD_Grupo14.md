@@ -95,19 +95,23 @@ Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos.
 
 ### Desarrollo TEMA 1 "Procedimientos y funciones almacenadas"
 
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/tema01_nombre_tema)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/Tema01_Procedimientos_y_funciones_almacenadas)
+
 ...
 
 ### Desarrollo TEMA 2 "Optimización de consultas a través de índices."
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema02_nombre_tema)
-> ...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/Tema02_Optimizacion_de_consultas_a_traves_de_indices)
+
+...
 
 ### Desarrollo TEMA 3 "Manejo de transacciones y transacciones anidadas."
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema03_nombre_tema)
-> ...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/Tema03_Manejo_de_transacciones_y_transacciones_anidadas)
+
+...
 
 ### Desarrollo TEMA 4 "Manejo de tipos de datos JSON."
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema04_nombre_tema)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/Tema04_Manejo_de_tipos_de_datos_JSON)
+
 ...
 
 # CAPÍTULO V: CONCLUSIONES
