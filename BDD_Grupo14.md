@@ -45,6 +45,28 @@ Diseñar e implementar un modelo de datos relacional que respalde el sistema Stu
 
 El alcance de esta primera entrega se limita al diseño y construcción del modelo de base de datos. Se incluyen el diagrama entidad-relación, el diccionario de datos y la definición de restricciones. Quedan fuera de alcance, en esta etapa, la implementación de la interfaz de usuario, la integración de algoritmos de inteligencia artificial y funcionalidades adicionales.
 
+# CAPÍTULO II: MARCO CONCEPTUAL O REFERENCIAL
+
+**TEMA 1 "Procedimientos y funciones almacenadas."** 
+...
+
+**TEMA 2 "Optimización de consultas a través de índices."** 
+...
+
+**TEMA 3 "Manejo de transacciones y transacciones anidadas."** 
+...
+
+**TEMA 4 "Manejo de tipos de datos JSON."** 
+...
+
+# CAPÍTULO III: METODOLOGÍA SEGUIDA 
+
+ **a) Cómo se realizó el Trabajo Práctico**
+...
+
+ **b) Herramientas (Instrumentos y procedimientos)**
+...
+
 
 # CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 
 ### Diagrama relacional
@@ -70,4 +92,33 @@ erDiagram
 ### Diccionario de datos
 
 Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos. 
+
+### Desarrollo TEMA 1 "Procedimientos y funciones almacenadas"
+
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/tema01_nombre_tema)
+...
+
+### Desarrollo TEMA 2 "Optimización de consultas a través de índices."
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema02_nombre_tema)
+> ...
+
+### Desarrollo TEMA 3 "Manejo de transacciones y transacciones anidadas."
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema03_nombre_tema)
+> ...
+
+### Desarrollo TEMA 4 "Manejo de tipos de datos JSON."
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema04_nombre_tema)
+...
+
+# CAPÍTULO V: CONCLUSIONES
+...
+
+
+# BIBLIOGRAFÍA DE CONSULTA
+ 1. ...
+ 2. ...
+ 3. ...
+ 4. ...
+ 5. ...
+
 
