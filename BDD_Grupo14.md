@@ -56,7 +56,7 @@ El alcance de esta primera entrega se limita al diseño y construcción del mode
 
 
 **TEMA 3 "Manejo de transacciones y transacciones anidadas."** 
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_3](script/Tema03_Manejo_de_transacciones_y_transacciones_anidadas/Manejo_de_tipos_de_datos_JSON.md)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_3](script/Tema03_Manejo_de_transacciones_y_transacciones_anidadas)
 
 
 **TEMA 4 "Manejo de tipos de datos JSON."** 
