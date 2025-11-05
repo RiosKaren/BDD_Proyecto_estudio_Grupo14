@@ -7,7 +7,7 @@ BEGIN TRY
     ---------------------------------------------------
     BEGIN TRANSACTION;
     
-    DECLARE @i INT = 9; -- 9 porque en el script original solo hay 8 . Carga a partir de esos datos
+    DECLARE @i INT = 9; -- 9 porque en el script original solo hay 8 .Empieza después de los datos ya insertados
     WHILE @i <= 50000 
     BEGIN
         INSERT INTO Usuario (id_usuario, nombre, correo, password, nivel_educativo, id_tipo_usuario)
@@ -16,7 +16,7 @@ BEGIN TRY
     END --Carga 48.992 usuarios para llegar a 50.000
 
    ---------------------------------------------------
-    DECLARE @m INT = 8; -- Empezamos después de tus datos
+    DECLARE @m INT = 8; -- Empezamos después de los datos ya insertados
     DECLARE @userId INT;
     WHILE @m <= 500000
     BEGIN
@@ -28,7 +28,7 @@ BEGIN TRY
     END --Carga 500.000 materias
 
     ---------------------------------------------------
-    DECLARE @a INT = 8; -- Empezamos después de tus datos
+    DECLARE @a INT = 8; -- Empezamos después de los datos ya insertados
     DECLARE @materiaId INT;
     WHILE @a <= 2000000 -- 2 Millones de apuntes
     BEGIN
@@ -62,12 +62,12 @@ GO
 -- ================================================================
 -- DEMOSTRACIÓN DE RENDIMIENTO
 -- ================================================================
--- Limpiamos caché
+-- Limpiamos caché 
 DBCC DROPCLEANBUFFERS; -- Limpia los datos de la memoria
 DBCC FREEPROCCACHE;   -- Limpia los planes de ejecución de la memoria
 GO
 
-SET STATISTICS IO, TIME ON; -- Activalas estadísticas de tiempo y lecturas
+SET STATISTICS IO, TIME ON; -- Activa estadísticas de tiempo y lecturas
 
 -----------------------------------------------
 -- 1 - Consulta sin indice
@@ -109,3 +109,4 @@ GO
 -- Eliminar el indice para repetir la demo
 DROP INDEX idx_apunte_titulo ON Apunte;
 GO
+
