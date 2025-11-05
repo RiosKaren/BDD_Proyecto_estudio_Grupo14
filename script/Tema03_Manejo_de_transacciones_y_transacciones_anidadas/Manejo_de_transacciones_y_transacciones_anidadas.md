@@ -55,6 +55,18 @@ BEGIN CATCH
 END CATCH
 ```
 
+## APLICACIONES PRÁCTICAS
+
+### Completar un Examen y Actualizar el Progreso
+
+Cuando un estudiante termina un examen, el sistema debe realizar tres operaciones que forman una unidad indivisible:
+
+1. **INSERT** en la tabla **Examen**: Registrar el nuevo examen con su puntaje
+2. **INSERT** en la tabla **Pomodoro**: Registrar la sesión de estudio realizada
+3. **UPDATE** en la tabla **Progreso**: Actualizar el avance porcentual y comentarios del estudiante
+
+**¿Por qué una transacción?** Estas tres operaciones están relacionadas lógicamente. Si el sistema registra el examen pero falla antes de actualizar el progreso, los datos serían inconsistentes. Una transacción asegura que **todas** las operaciones se completen o **ninguna** se aplique.
+
 ## TRANSACCIONES ANIDADAS (TA)
 
 El modelo clásico de transacciones es "plano": una sola unidad de trabajo. Las **transacciones anidadas**, propuestas originalmente por Moss (1985), permiten descomponer una transacción grande en una jerarquía de **sub-transacciones** más pequeñas.
@@ -87,27 +99,6 @@ Los cambios solo se hacen permanentes en la base de datos cuando la **transacci�
 - **Paralela (||):** Las hijas pueden ejecutarse simultáneamente.
 - **Alternativa (∇):** Las hijas se ejecutan una a la vez, y solo una de ellas puede validar; las demás son descartadas.
 
-## APLICACIONES PRÁCTICAS
-
-### Completar un Examen y Actualizar el Progreso
-
-Cuando un usuario termina un examen, se necesitan realizar dos operaciones que no se pueden separar:
-
-1. **Actualizar** la tabla **Examen** con el **puntaje**
-2. **Actualizar** la tabla **Progreso** con el nuevo **avance_porcentual** y **comentarios**
-
-**¿Por qué una transacción?** Si el sistema actualiza el Examen pero falla antes de actualizar el Progreso, los datos serían inconsistentes. Una transacción asegura que **ambas** tablas se actualicen o **ninguna** lo haga.
-
-## NIVELES DE AISLAMIENTO
-
-SQL Server proporciona diferentes niveles de aislamiento que controlan cómo las transacciones concurrentes interactúan:
-
-1. **READ UNCOMMITTED:** Permite leer datos no confirmados (dirty reads)
-2. **READ COMMITTED:** Solo lee datos confirmados (nivel por defecto)
-3. **REPEATABLE READ:** Evita lecturas no repetibles
-4. **SERIALIZABLE:** Máximo aislamiento, evita lecturas fantasma
-5. **SNAPSHOT:** Usa versionamiento de filas
-
 ## VARIABLES DEL SISTEMA ÚTILES
 
 - **@@TRANCOUNT:** Devuelve el número de transacciones activas en la conexión actual
@@ -134,8 +125,9 @@ SQL Server proporciona diferentes niveles de aislamiento que controlan cómo las
 
 ## CONCLUSIONES
 
-El manejo adecuado de transacciones es esencial para mantener la integridad y consistencia de los datos en sistemas de bases de datos. Las transacciones garantizan que las operaciones complejas se ejecuten de manera confiable siguiendo las propiedades ACID.
+El manejo adecuado de transacciones es esencial para mantener la integridad y consistencia de los datos en sistemas de bases de datos. Las transacciones garantizan que las operaciones se ejecuten de manera confiable siguiendo las propiedades ACID.
 
-Las transacciones anidadas proporcionan un modelo más flexible para manejar operaciones complejas, permitiendo un control de errores más granular y la posibilidad de ejecutar sub-operaciones de manera condicional.
+Las transacciones anidadas proporcionan un modelo más flexible para manejar operaciones complejas, permitiendo un control de errores más específico y la posibilidad de ejecutar sub-operaciones de manera condicional.
 
 La implementación correcta de transacciones, junto con un manejo robusto de errores, es fundamental para desarrollar aplicaciones de base de datos confiables y mantenibles.
+
