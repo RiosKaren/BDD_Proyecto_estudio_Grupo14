@@ -18,7 +18,7 @@ Para garantizar la integridad, las transacciones deben cumplir con las propiedad
 La transacción es indivisible. O se ejecutan todas sus operaciones, o no se ejecuta ninguna. No existen las "transacciones a medias". Si ocurre un error en cualquier punto, todas las operaciones realizadas hasta ese momento se revierten.
 
 ### C - Consistencia (Consistency)
-La transacción lleva a la base de datos de un estado válido a otro estado válido. No puede violar las reglas de integridad definidas (como llaves foráneas, restricciones UNIQUE, CHECK, entre otras).
+La transacción lleva a la base de datos de un estado válido a otro estado válido. No puede violar las reglas de integridad definidas (como claves foráneas, restricciones UNIQUE, CHECK, entre otras).
 
 ### I - Aislamiento (Isolation)
 Las transacciones que se ejecutan de forma concurrente (al mismo tiempo) no deben interferir entre sí. Es como si cada transacción se ejecutara sola en el sistema, una después de la otra (en serie), aunque en la práctica se estén ejecutando en paralelo.
@@ -130,4 +130,5 @@ El manejo adecuado de transacciones es esencial para mantener la integridad y co
 Las transacciones anidadas proporcionan un modelo más flexible para manejar operaciones complejas, permitiendo un control de errores más específico y la posibilidad de ejecutar sub-operaciones de manera condicional.
 
 La implementación correcta de transacciones, junto con un manejo robusto de errores, es fundamental para desarrollar aplicaciones de base de datos confiables y mantenibles.
+
 
