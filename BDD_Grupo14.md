@@ -48,16 +48,20 @@ El alcance de esta primera entrega se limita al diseño y construcción del mode
 # CAPÍTULO II: MARCO CONCEPTUAL O REFERENCIAL
 
 **TEMA 1 "Procedimientos y funciones almacenadas."** 
-...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/Tema01_Procedimientos_y_funciones_almacenadas)
+
 
 **TEMA 2 "Optimización de consultas a través de índices."** 
-...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/Tema02_Optimizacion_de_consultas_a_traves_de_indices)
+
 
 **TEMA 3 "Manejo de transacciones y transacciones anidadas."** 
-...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_3](script/Tema03_Manejo_de_transacciones_y_transacciones_anidadas/Manejo_de_tipos_de_datos_JSON.md)
+
 
 **TEMA 4 "Manejo de tipos de datos JSON."** 
-...
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/Tema04_Manejo_de_tipos_de_datos_JSON)
+
 
 # CAPÍTULO III: METODOLOGÍA SEGUIDA 
 
