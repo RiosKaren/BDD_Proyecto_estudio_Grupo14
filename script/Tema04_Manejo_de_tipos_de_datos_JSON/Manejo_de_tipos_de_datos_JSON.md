@@ -72,7 +72,11 @@ UPDATE Apunte
 SET contenido = JSON_MODIFY(contenido, 'delete $.tags')
 WHERE id_apunte = 2;
 ```
+# Conclusiones:
+En conclusión, el soporte de JSON en SQL Server permite integrar datos semiestructurados dentro de un entorno relacional, combinando la flexibilidad del formato JSON con la solidez de las bases de datos tradicionales. Aunque inicialmente se almacenaba como texto en columnas NVARCHAR, las funciones nativas (JSON_VALUE, JSON_QUERY, JSON_MODIFY, OPENJSON) facilitan operaciones CRUD y consultas eficientes. Con la incorporación del tipo de dato JSON nativo en versiones recientes, se logra mayor rendimiento y optimización en escenarios modernos que requieren manejar información estructurada y semiestructurada de manera conjunta.
+
 ## Referencias
 - Documentación oficial de Microsoft sobre JSON en SQL Server:  
   https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver17
+
 
