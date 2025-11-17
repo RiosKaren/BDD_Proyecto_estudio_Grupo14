@@ -107,23 +107,49 @@ WHERE id_apunte = @id_apunte
 Obtener todos los exámenes de una materia específica, filtrando por id_materia
 ```sql
 --Consulta con procedimiento
-CREATE PROCEDURE ObtenerExamenesPorMateria
-    @id_materia INT
+CREATE PROCEDURE ObtenerDetalleExamenesPorMateria
+    @id_materia INT,
+    @orden_por_puntaje BIT = 0 -- 1: ordena por puntaje descendente, 0: por fecha ascendente
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT id_examen, fecha, puntaje, cantidad_preguntas
-    FROM Examen
-    WHERE id_materia = @id_materia;
+    SELECT 
+        e.id_examen,
+        e.fecha,
+        e.puntaje,
+        e.cantidad_preguntas,
+        m.nombre_materia,
+        u.nombre AS nombre_usuario,
+        p.avance_porcentual
+    FROM Examen e
+    INNER JOIN Materia m ON e.id_materia = m.id_materia
+    INNER JOIN Progreso p ON m.id_materia = p.id_materia
+    INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
+    WHERE e.id_materia = @id_materia
+    ORDER BY 
+        CASE WHEN @orden_por_puntaje = 1 THEN e.puntaje END DESC,
+        CASE WHEN @orden_por_puntaje = 0 THEN e.fecha END ASC;
 END;
-EXEC ObtenerExamenesPorMateria @id_materia = 3;
+
 ```
 ```sql
 --Consulta equivalente
-SELECT id_examen, fecha, puntaje, cantidad_preguntas
-FROM Examen
-WHERE id_materia = 3;
+SELECT 
+    e.id_examen,
+    e.fecha,
+    e.puntaje,
+    e.cantidad_preguntas,
+    m.nombre_materia,
+    u.nombre AS nombre_usuario,
+    p.avance_porcentual
+FROM Examen e
+INNER JOIN Materia m ON e.id_materia = m.id_materia
+INNER JOIN Progreso p ON m.id_materia = p.id_materia
+INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
+WHERE e.id_materia = 2
+ORDER BY e.puntaje DESC;
+
 ```
 
 # Conclusiones
@@ -135,6 +161,7 @@ Los procedimientos y funciones almacenados en SQL Server son herramientas podero
 - Dewson, R. (s.f.). SQL Server for Developers - Fourth Edition. Apress.
 - https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver17
 - https://learn.microsoft.com/es-es/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver17
+
 
 
 
