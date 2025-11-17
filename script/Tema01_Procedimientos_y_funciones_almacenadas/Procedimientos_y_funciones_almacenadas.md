@@ -149,8 +149,62 @@ INNER JOIN Progreso p ON m.id_materia = p.id_materia
 INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
 WHERE e.id_materia = 2
 ORDER BY e.puntaje DESC;
-
 ```
+---
+### Resultados de comparación:
+```sql
+SET STATISTICS IO ON;
+SET STATISTICS TIME ON;
+EXEC ObtenerDetalleExamenesPorMateria @id_materia = 2, @orden_por_puntaje = 1;
+SET STATISTICS TIME OFF;
+SET STATISTICS TIME ON;
+SELECT 
+    e.id_examen,
+    e.fecha,
+    e.puntaje,
+    e.cantidad_preguntas,
+    m.nombre_materia,
+    u.nombre AS nombre_usuario,
+    p.avance_porcentual
+FROM Examen e
+INNER JOIN Materia m ON e.id_materia = m.id_materia
+INNER JOIN Progreso p ON m.id_materia = p.id_materia
+INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
+WHERE e.id_materia = 2
+ORDER BY e.puntaje DESC;
+SET STATISTICS TIME OFF;
+```
+---
+
+SQL Server parse and compile time: 
+   CPU time = 0 ms, elapsed time = 3 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+Table 'Examen'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Usuario'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Progreso'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Materia'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 4 ms.
+
+(1 fila afectada)
+Table 'Examen'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Usuario'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Progreso'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Materia'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+---
+
+La ejecución del procedimiento almacenado y la consulta directa arrojó tiempos muy similares, con diferencias mínimas (0 ms vs. 4 ms). Aunque el impacto en este caso es insignificante debido al bajo volumen de datos, la comparación demuestra que sí existe una diferencia en la forma en que SQL Server procesa ambos enfoques.
+El procedimiento almacenado aprovecha la caché del plan de ejecución, lo que le otorga mayor estabilidad y eficiencia en escenarios repetitivos o con grandes volúmenes de información. La consulta directa, en cambio, genera planes ad hoc que pueden variar y consumir más recursos cuando se ejecutan con parámetros distintos.
 
 # Conclusiones
 Los procedimientos y funciones almacenados en SQL Server son herramientas poderosas que permiten a los desarrolladores encapsular lógica compleja y reutilizable dentro de la base de datos. Los procedimientos almacenados, al ser precompilados, ofrecen ventajas significativas como la reducción del tráfico de red y la mejora del rendimiento al ejecutar múltiples instrucciones T-SQL como una sola unidad . Además, permiten manejar transacciones, controlar errores y optimizar el uso de parámetros, lo que garantiza la consistencia y la integridad de los datos . Por otro lado, las funciones definidas por el usuario (UDFs) proporcionan una forma eficiente de realizar cálculos y transformaciones de datos dentro de las consultas SQL . Las funciones escalares devuelven un único valor, mientras que las funciones de tabla (TVF) pueden devolver conjuntos de filas, lo que las hace ideales para encapsular lógica que necesita ser reutilizada en múltiples consultas . Aunque las funciones no permiten manejar transacciones ni control de flujo complejo, su capacidad para ser utilizadas directamente en consultas (SELECT, WHERE, JOIN, APPLY) las hace extremadamente útiles para cálculos reutilizables . En resumen, tanto los procedimientos almacenados como las funciones en SQL Server son esenciales para el desarrollo de aplicaciones robustas y eficientes, permitiendo a los desarrolladores mantener la integridad de los datos y optimizar el rendimiento de las consultas.
@@ -161,6 +215,7 @@ Los procedimientos y funciones almacenados en SQL Server son herramientas podero
 - Dewson, R. (s.f.). SQL Server for Developers - Fourth Edition. Apress.
 - https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver17
 - https://learn.microsoft.com/es-es/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver17
+
 
 
 
