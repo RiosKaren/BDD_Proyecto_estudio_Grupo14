@@ -42,6 +42,37 @@ VALUES (
     N'{"introduccion":"Definición","ejemplo":"y = a + bx","tags":["estadística","modelos"]}'
 );
 
+--Inserción inváida
+INSERT INTO Apunte (id_apunte, id_materia, titulo, contenido)
+VALUES (
+    2,
+    101,
+    'Ejemplo Inválido',
+    N'Introducción: Definición, Ejemplo: y = a + bx'
+);
+```
+## Ejemplo de consulta
+Extraer un campo específico con JSON_VALUE
+```sql
+SELECT 
+    titulo,
+    JSON_VALUE(contenido, '$.ejemplo') AS ejemplo_formula
+FROM Apunte
+WHERE id_apunte = 1;
+```
+## Ejemplo de actualización 
+```sql
+UPDATE Apunte
+SET contenido = JSON_MODIFY(contenido, '$.ejemplo', 'y = a + bx + c')
+WHERE id_apunte = 1;
+```
+## Ejemplo delete
+```sql
+UPDATE Apunte
+SET contenido = JSON_MODIFY(contenido, 'delete $.tags')
+WHERE id_apunte = 2;
+```
 ## Referencias
 - Documentación oficial de Microsoft sobre JSON en SQL Server:  
   https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver17
+
