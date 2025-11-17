@@ -103,6 +103,29 @@ WHERE id_apunte = @id_apunte
 - Son ideales para cálculos reutilizables y para encapsular lógica que devuelve resultados tabulares.
 - A diferencia de los procedimientos, las funciones no permiten manejar transacciones ni control de flujo complejo.
 ---
+## SP VS Consulta directa
+Obtener todos los exámenes de una materia específica, filtrando por id_materia
+'''sql
+--Consulta con procedimiento
+CREATE PROCEDURE ObtenerExamenesPorMateria
+    @id_materia INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT id_examen, fecha, puntaje, cantidad_preguntas
+    FROM Examen
+    WHERE id_materia = @id_materia;
+END;
+EXEC ObtenerExamenesPorMateria @id_materia = 3;
+'''
+
+'''sql
+--consulta equivalente
+SELECT id_examen, fecha, puntaje, cantidad_preguntas
+FROM Examen
+WHERE id_materia = 3;
+'''
 
 # Conclusiones
 Los procedimientos y funciones almacenados en SQL Server son herramientas poderosas que permiten a los desarrolladores encapsular lógica compleja y reutilizable dentro de la base de datos. Los procedimientos almacenados, al ser precompilados, ofrecen ventajas significativas como la reducción del tráfico de red y la mejora del rendimiento al ejecutar múltiples instrucciones T-SQL como una sola unidad . Además, permiten manejar transacciones, controlar errores y optimizar el uso de parámetros, lo que garantiza la consistencia y la integridad de los datos . Por otro lado, las funciones definidas por el usuario (UDFs) proporcionan una forma eficiente de realizar cálculos y transformaciones de datos dentro de las consultas SQL . Las funciones escalares devuelven un único valor, mientras que las funciones de tabla (TVF) pueden devolver conjuntos de filas, lo que las hace ideales para encapsular lógica que necesita ser reutilizada en múltiples consultas . Aunque las funciones no permiten manejar transacciones ni control de flujo complejo, su capacidad para ser utilizadas directamente en consultas (SELECT, WHERE, JOIN, APPLY) las hace extremadamente útiles para cálculos reutilizables . En resumen, tanto los procedimientos almacenados como las funciones en SQL Server son esenciales para el desarrollo de aplicaciones robustas y eficientes, permitiendo a los desarrolladores mantener la integridad de los datos y optimizar el rendimiento de las consultas.
@@ -113,6 +136,7 @@ Los procedimientos y funciones almacenados en SQL Server son herramientas podero
 - Dewson, R. (s.f.). SQL Server for Developers - Fourth Edition. Apress.
 - https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver17
 - https://learn.microsoft.com/es-es/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver17
+
 
 
 
