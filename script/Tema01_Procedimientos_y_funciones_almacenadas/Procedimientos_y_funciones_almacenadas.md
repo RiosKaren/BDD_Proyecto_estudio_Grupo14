@@ -16,13 +16,15 @@ Los procedimientos almacenados le dan a tu aplicación una única interfaz proba
 ## Estructura y elementos principales de un procedimiento almacenado en SQL Server
 Para definir un procedimiento almacenado en SQL Server, se debe iniciar siempre con la instrucción CREATE PROCEDURE. Esta instrucción proporciona una sintaxis flexible que extiende las capacidades básicas de T-SQL con comandos adicionales diseñados específicamente para la creación de procedimientos.
 ### Componentes principales de la sintaxis
-•	nombre_procedimiento: Es el identificador único que se le asigna al procedimiento almacenado. Permite invocar el procedimiento cada vez que se necesite ejecutar su lógica.
-•	Parámetros (@param): Permiten recibir valores de entrada o devolver valores de salida, haciendo que el procedimiento sea reutilizable y adaptable a diferentes escenarios.
-•	OUTPUT: Sirve para devolver valores al llamador del procedimiento, facilitando la comunicación de resultados o datos procesados.
-•	Valores por defecto: Permiten hacer opcional el envío de ciertos parámetros, proporcionando flexibilidad en la ejecución del procedimiento.
-•	AS BEGIN ... END: Este bloque delimita el conjunto de instrucciones T-SQL que serán ejecutadas por el procedimiento almacenado. Todo el código a ejecutar se ubica dentro de este bloque.
-•	SET NOCOUNT ON: Instrucción utilizada para evitar que se devuelvan mensajes de “X filas afectadas” en la ejecución, lo cual mejora el rendimiento, especialmente en procedimientos que ejecutan múltiples operaciones.
-•	GO: Se utiliza para separar lotes de instrucciones dentro de un script, facilitando la organización y ejecución secuencial de los comandos.
+- nombre_procedimiento: Es el identificador único que se le asigna al procedimiento almacenado. Permite invocar el procedimiento cada vez que se necesite ejecutar su lógica.
+- Parámetros (@param): Permiten recibir valores de entrada o devolver valores de salida, haciendo que el procedimiento sea reutilizable y adaptable a diferentes escenarios.
+- OUTPUT: Sirve para devolver valores al llamador del procedimiento, facilitando la comunicación de resultados o datos procesados.
+- Valores por defecto: Permiten hacer opcional el envío de ciertos parámetros, proporcionando flexibilidad en la ejecución del procedimiento.
+- AS BEGIN ... END: Este bloque delimita el conjunto de instrucciones T-SQL que serán ejecutadas por el procedimiento almacenado. Todo el código a ejecutar se ubica dentro de este bloque.
+- SET NOCOUNT ON: Instrucción utilizada para evitar que se devuelvan mensajes de “X filas afectadas” en la ejecución, lo cual mejora el rendimiento, especialmente en procedimientos que ejecutan múltiples operaciones.
+- GO: Se utiliza para separar lotes de instrucciones dentro de un script, facilitando la organización y ejecución secuencial de los comandos.
+---
+
 ### Ejemplo de procedimiento almacenado
 A continuación se presenta un ejemplo de cómo se implementa un procedimiento almacenado que encapsula la lógica de inserción en una tabla y protege la integridad de la estructura interna:
 ```sql
@@ -94,6 +96,8 @@ FROM Flashcard
 WHERE id_apunte = @id_apunte
 );
 ```
+---
+
 ## Ventajas de las funciones frente a los procedimientos almacenados
 - Se pueden utilizar directamente en consultas (SELECT).
 - Son ideales para cálculos reutilizables y para encapsular lógica que devuelve resultados tabulares.
@@ -109,6 +113,7 @@ Los procedimientos y funciones almacenados en SQL Server son herramientas podero
 - Dewson, R. (s.f.). SQL Server for Developers - Fourth Edition. Apress.
 - https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver17
 - https://learn.microsoft.com/es-es/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver17
+
 
 
 
