@@ -25,6 +25,7 @@ Para definir un procedimiento almacenado en SQL Server, se debe iniciar siempre 
 •	GO: Se utiliza para separar lotes de instrucciones dentro de un script, facilitando la organización y ejecución secuencial de los comandos.
 ### Ejemplo de procedimiento almacenado
 A continuación se presenta un ejemplo de cómo se implementa un procedimiento almacenado que encapsula la lógica de inserción en una tabla y protege la integridad de la estructura interna:
+```sql
 CREATE PROCEDURE InsertarApunte
 @id_materia INT,
 @titulo VARCHAR(100),
@@ -36,44 +37,54 @@ INSERT INTO Apunte (id_materia, titulo, contenido, fecha_creacion)
 VALUES (@id_materia, @titulo, @contenido, CAST(GETDATE() AS DATE));
 END;
 GO
+```
 Este procedimiento permite insertar un nuevo registro en la tabla Apunte utilizando los parámetros proporcionados, asegurando que los usuarios no necesiten conocer detalles internos de la tabla ni la lógica de inserción específica.
 
 ## Capacidades avanzadas de procedimientos almacenados y funciones definidas por el usuario
 ### Manejo de transacciones en procedimientos almacenados
 Los procedimientos almacenados permiten iniciar, confirmar (COMMIT) o revertir (ROLLBACK) transacciones dentro de su ejecución. Esto garantiza la consistencia y atomicidad en operaciones críticas. Por ejemplo, se puede comenzar una transacción para actualizar el nivel educativo de un usuario, y confirmarla al finalizar correctamente:
+```sql
 BEGIN TRAN;
 UPDATE Usuario SET nivel_educativo = 'Universitario' WHERE id_usuario = 1;
 COMMIT;
+```
 ### Control de errores con TRY...CATCH
 Dentro de los procedimientos almacenados, se puede implementar manejo de errores utilizando las estructuras TRY...CATCH. Esto permite capturar excepciones y registrar errores en tablas de auditoría, facilitando el monitoreo y la depuración. Por ejemplo:
+```sql
 BEGIN TRY
 INSERT INTO Materia(nombre_materia) VALUES ('Estadística');
 END TRY
 BEGIN CATCH
 INSERT INTO LogErrores VALUES (ERROR_MESSAGE(), GETDATE());
 END CATCH;
+```
 ### Optimización con parámetros
 Los procedimientos almacenados pueden aceptar parámetros para filtrar resultados o modificar la lógica sin necesidad de reescribir el código. Un ejemplo es un procedimiento que devuelve exámenes según el identificador de materia:
+```sql
 CREATE PROCEDURE ObtenerExamenesPorMateria
 @id_materia INT
 AS
 BEGIN
 SELECT * FROM Examen WHERE id_materia = @id_materia;
 END;
+```
 ### Encapsulación de lógica compleja
 Es posible combinar múltiples operaciones en un solo procedimiento almacenado, como el cálculo de promedios, la actualización de progreso y el registro de auditoría, todo en una sola ejecución. Esto facilita la gestión y el mantenimiento de la lógica de negocio compleja.
 ## Funciones definidas por el usuario (UDFs)
 Las funciones definidas por el usuario son otro tipo de objeto en SQL Server que complementa las capacidades de los procedimientos almacenados.
 ### Funciones escalares
 Estas funciones devuelven un único valor. Por ejemplo, se puede crear una función para calcular el porcentaje de aciertos en una flashcard:
+```sql
 CREATE FUNCTION CalcularPorcentajeAciertos (@aciertos INT, @errores INT)
 RETURNS FLOAT
 AS
 BEGIN
 RETURN (CAST(@aciertos AS FLOAT) / (@aciertos + @errores)) * 100;
 END;
+```
 ### Funciones de tabla (Table-Valued Functions, TVF)
 Las funciones de tabla devuelven un conjunto de filas, similar a una tabla. Un ejemplo es una función que retorna todas las flashcards de un apunte en formato tabular:
+```sql
 CREATE FUNCTION ObtenerFlashcardsPorApunte (@id_apunte INT)
 RETURNS TABLE
 AS
@@ -82,8 +93,10 @@ SELECT pregunta, respuesta, aciertos, errores
 FROM Flashcard
 WHERE id_apunte = @id_apunte
 );
+```
 ## Ventajas de las funciones frente a los procedimientos almacenados
 •	Se pueden utilizar directamente en consultas (SELECT).
 •	Son ideales para cálculos reutilizables y para encapsular lógica que devuelve resultados tabulares.
 •	A diferencia de los procedimientos, las funciones no permiten manejar transacciones ni control de flujo complejo.
+
 
