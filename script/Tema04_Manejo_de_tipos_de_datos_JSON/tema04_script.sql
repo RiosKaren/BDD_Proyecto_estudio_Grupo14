@@ -5,7 +5,7 @@
 -- ================================================================
 -- 1. Creacion de la BDD alternativa.
 
-CREATE DATABASE StudIA2;
+CREATE DATABASE StudIA2;    
 GO
 
 USE StudIA2;
@@ -76,9 +76,9 @@ INSERT INTO Usuario (id_usuario, nombre, correo, password, nivel_educativo, id_t
 (2, 'Juan P�rez', 'juan.p@example.com', 'pass456', 'Universitario', 2);
 
 INSERT INTO Materia (id_materia, id_usuario, nombre_materia, descripcion) VALUES
-(1, 1, 'Ingl�s', 'Gram�tica b�sica y vocabulario inicial.'),
-(2, 2, 'Historia Universal', 'Principales civilizaciones y hechos hist�ricos.'),
-(3, 2, 'Matem�tica', '�lgebra y trigonometr�a.');
+(1, 1, 'Inglés', 'Gramática básica y vocabulario inicial.'),
+(2, 2, 'Historia Universal', 'Principales civilizaciones y hechos históricos.'),
+(3, 2, 'Matemática', 'Álgebra y trigonometría.');
 GO
 
 
@@ -93,10 +93,10 @@ VALUES (
     /*N por el NVARCHAR*/
     N'{ 
         "tema": "Presente Simple",
-        "definicion": "Se usa para h�bitos y rutinas.",
+        "definicion": "Se usa para hábitos y rutinas.",
         "reglas": ["Usar ''s'' para He/She/It", "Usar ''do/does'' para preguntas"],
         "ejemplos": [
-            {"oracion": "I play soccer", "traduccion": "Juego al f�tbol"},
+            {"oracion": "I play soccer", "traduccion": "Yo juego al fútbol"},
             {"oracion": "She plays piano", "traduccion": "Ella toca el piano"}
         ]
     }', 
@@ -110,10 +110,10 @@ VALUES (
     'Antigua Roma', 
     N'{
         "tema": "Antigua Roma",
-        "puntos_clave": ["Influencia en pol�tica y derecho"],
+        "puntos_clave": ["Influencia en política y derecho"],
         "eventos": [
-            {"nombre": "Fundaci�n", "a�o": -753},
-            {"nombre": "Ca�da del Imperio (Occidente)", "a�o": 476}
+            {"nombre": "Fundación", "año": -753},
+            {"nombre": "Caída del Imperio (Occidente)", "año": 476}
         ]
     }', 
     '2025-09-05'
@@ -130,7 +130,7 @@ GO
     
 
 -- ================================================================
--- PASO 5: DEMOSTRACI�N DE CONSULTAS JSON (CORREGIDO)
+-- PASO 5: DEMOSTRACIÓN DE CONSULTAS JSON (CORREGIDO)
 -- ================================================================
 -- 1. Leer un valor simple (string) con JSON_VALUE
 
@@ -158,7 +158,7 @@ WHERE
 -- 3. Buscar usando un valor DENTRO del JSON
 
 -- Apuntes que mencionen el a�o 476:
-PRINT '--- 3. Buscando apuntes que mencionen el a�o 476: ---';
+PRINT '--- 3. Buscando apuntes que mencionen el año 476: ---';
 SELECT 
     id_apunte,
     titulo,
@@ -166,7 +166,7 @@ SELECT
 FROM 
     Apunte
 WHERE 
-    -- La '�' en "a�o" requiere comillas dobles en la ruta
-    JSON_VALUE(contenido, '$.eventos[1]."a�o"') = 476;
+    -- La 'ñ' en "año" requiere comillas dobles en la ruta
+    JSON_VALUE(contenido, '$.eventos[1]."año"') = 476;
 
 GO

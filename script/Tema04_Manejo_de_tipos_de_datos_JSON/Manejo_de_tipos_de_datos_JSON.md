@@ -1,12 +1,28 @@
+# Manejo de tipos de datos JSON dentro de SQL
+
+## Contexto: ¿Qué es JSON?
+El tipo de datos **JSON** (**JavaScript Object Notation** o *Notación de Objetos de JavaScript*) es un formato de texto serializado para guardar datos
+(especificamente, objetos de **JavaScript**) de manera "legible", proveniente de este mismo lenguaje. Su sintaxis es codigo de JavaScript valido,
+el cual define y declara la estructura de un objeto y sus tipos dentro de este.
+
+A pesar de esta relación directa, el formato JSON se utiliza de manera masiva e independiente a JavaScript, dado a que los .json son archivos
+de texto con una sintexis legible por cualquier persona, convirtiendolo en un formato altamente portable y adapatable. Se usa tanto para el manejo
+de información en la web (empaquetación de datos para enviarse a travez de WebSockets o HTTP, exportación de objetos directamente desde JavaScript
+corriendo en un navegador, etc) o localmente (bases de datos, guardado de configuraciones de programas, entre otros).
+
+Es común ver el uso de JSON en Bases de Datos, especialmente en motores NoSQL como MongoDB o Azure Cosmos, pero tambien en aquellas donde se necesite
+guardar objetos variados no definidos de manera sencilla y prolija.
+
+## JSON en SQL
+JSON no es un tipo de dato dentro del estandar SQL, pero dado a que es un formato de texto, podemos guardarlo en una columna con tipo de dato `NVARCHAR`. La
+mayoria de los motores de SQL modernos contienen funciones predefinidas para el "parsing" y manejo de contenido JSON, e incluso tipos de datos nativos a
+esos motores (osea, que estan fuera del estandar y no son portables entre sistemas con diferente suites de software).
+
 # JSON en SQL Server: Evolución y Características
 
 ## Introducción
 En SQL Server, JSON no es considerado un tipo de dato tradicional como `INT` o `VARCHAR`. El soporte para trabajar con JSON fue incorporado a partir de 
 **SQL Server 2016**, permitiendo manipular datos semiestructurados dentro de columnas de tipo `NVARCHAR(MAX)`.
-
-## ¿Qué es JSON?
-**JSON (JavaScript Object Notation)** es un formato ligero y basado en texto para el intercambio de datos. Su estructura permite representar objetos 
-y arreglos de manera organizada y sencilla, facilitando la transferencia y almacenamiento de información entre sistemas.
 
 ## Soporte de JSON en SQL Server
 Desde **SQL Server 2016**, se introdujo un conjunto de funciones que permiten leer, escribir y manipular datos semiestructurados en columnas 
@@ -75,8 +91,15 @@ WHERE id_apunte = 2;
 # Conclusiones:
 En conclusión, el soporte de JSON en SQL Server permite integrar datos semiestructurados dentro de un entorno relacional, combinando la flexibilidad del formato JSON con la solidez de las bases de datos tradicionales. Aunque inicialmente se almacenaba como texto en columnas NVARCHAR, las funciones nativas (JSON_VALUE, JSON_QUERY, JSON_MODIFY, OPENJSON) facilitan operaciones CRUD y consultas eficientes. Con la incorporación del tipo de dato JSON nativo en versiones recientes, se logra mayor rendimiento y optimización en escenarios modernos que requieren manejar información estructurada y semiestructurada de manera conjunta.
 
+
 ## Referencias
 - Documentación oficial de Microsoft sobre JSON en SQL Server:  
   https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver17
-
-
+- Documentación en Geeks For Geeks sobre el uso de JSON en SQL:
+  https://www.geeksforgeeks.org/sql/working-with-json-in-sql/
+- Estandar SQL en el ISO:
+  https://www.iso.org/standard/76583.html
+- JSON.org:
+  https://www.json.org/json-es.html
+- Documentación de Mozilla de JSON en MDN Docs:
+  https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
