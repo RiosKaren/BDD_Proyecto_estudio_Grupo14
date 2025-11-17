@@ -95,9 +95,9 @@ WHERE id_apunte = @id_apunte
 );
 ```
 ## Ventajas de las funciones frente a los procedimientos almacenados
-•	Se pueden utilizar directamente en consultas (SELECT).
-•	Son ideales para cálculos reutilizables y para encapsular lógica que devuelve resultados tabulares.
-•	A diferencia de los procedimientos, las funciones no permiten manejar transacciones ni control de flujo complejo.
+- Se pueden utilizar directamente en consultas (SELECT).
+- Son ideales para cálculos reutilizables y para encapsular lógica que devuelve resultados tabulares.
+- A diferencia de los procedimientos, las funciones no permiten manejar transacciones ni control de flujo complejo.
 ---
 
 # Conclusiones
@@ -109,6 +109,7 @@ Los procedimientos y funciones almacenados en SQL Server son herramientas podero
 - Dewson, R. (s.f.). SQL Server for Developers - Fourth Edition. Apress.
 - https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver17
 - https://learn.microsoft.com/es-es/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver17
+
 
 
 
