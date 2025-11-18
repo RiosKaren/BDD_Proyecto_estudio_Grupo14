@@ -133,19 +133,17 @@ Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos.
 ...
 
 # CAPÍTULO V: CONCLUSIONES
-En conclusión, el proyecto cumplió su objetivo de diseñar el modelo relacional "StudIA". Se creó una base de datos sólida que garantiza la integridad y escalabilidad, resolviendo el problema de la fragmentación de herramientas de estudio.
+En conclusión, el proyecto cumplió exitosamente el objetivo general de diseñar e implementar un modelo de datos relacional robusto y coherente para el sistema "StudIA". El diseño, reflejado en el Diagrama Relacional y el Diccionario de Datos, establece una base sólida que garantiza la integridad, consistencia y escalabilidad de la aplicación, resolviendo la problemática de la fragmentación de herramientas de estudio.
 
-La investigación técnica demostró que el sistema está optimizado para los cuatro pilares clave de una base de datos moderna:
-1. Rendimiento: Con índices, logrando reducir consultas de 2 millones de filas leídas a solo 1 (Index Scan vs. Index Seek).
-     
-2. Integridad: Con transacciones (ACID), asegurando que operaciones complejas (como registrar un examen) sean de "todo o nada" mediante el uso de ROLLBACK ante errores.
-     
-3. Eficiencia: Con procedimientos almacenados, que encapsulan la lógica (ej. SP_InsertarApunte), reducen el tráfico de red y aumentan la seguridad.
-     
-4. Flexibilidad: Con soporte JSON, permitiendo guardar y consultar (JSON_VALUE) datos semi-estructurados dentro del modelo relacional, combinando lo mejor de ambos mundos.
-     
-El resultado es una base de datos robusta, escalable y lista para una implementación real.
+La investigación de los temas técnicos demostró cómo las características avanzadas de SQL Server son fundamentales para este objetivo. La optimización de consultas a través de índices demostró ser una estrategia esencial para la escalabilidad. El experimento de carga masiva de 2 millones de registros en la tabla Apunte probó que, sin un índice, la base de datos recurre a un 'Clustered Index Scan' ineficiente, leyendo 2,000,000 de filas. Al aplicar un índice no agrupado (idx_apunte_titulo), la misma consulta se transformó en un 'Index Seek' de alto rendimiento, leyendo 1 sola fila.
 
+El manejo de transacciones es crítico para proteger la integridad de los datos en operaciones compuestas. La simulación de registrar un examen, un pomodoro y actualizar el progreso (INSERT/UPDATE múltiples) probó que el uso de BEGIN TRAN con TRY...CATCH y ROLLBACK garantiza la Atomicidad (ACID). Si una parte de la operación falla, la base de datos se revierte por completo, evitando estados de datos inconsistentes.
+
+El uso de procedimientos almacenados y funciones (SP/UDF) contribuye a un sistema más limpio, seguro y eficiente. Estas herramientas permiten encapsular la lógica de negocio (como SP_InsertarApunte) directamente en la base de datos. Esto reduce el tráfico de red, fomenta la reutilización del código y simplifica el mantenimiento futuro de la aplicación "StudIA".
+
+Finalmente, la exploración del manejo de datos JSON demostró cómo el modelo relacional puede incorporar flexibilidad. Al definir la columna Apunte.contenido como NVARCHAR(MAX) con una CONSTRAINT CHECK (ISJSON(contenido) = 1), se combina la flexibilidad de un esquema NoSQL con la robustez de SQL. Se probó que es posible consultar datos dentro del objeto JSON (usando JSON_VALUE), permitiendo un manejo de datos semi-estructurados eficiente.
+
+En resumen, el diseño de la base de datos "StudIA" no solo cumple con los requisitos funcionales de la aplicación, sino que también está optimizada para el rendimiento (Índices), la integridad (Transacciones), la eficiencia (Procedimientos) y la flexibilidad (JSON). Esta combinación de técnicas asegura que el sistema sea robusto, escalable y esté preparado para una implementación en el mundo real.
 # BIBLIOGRAFÍA DE CONSULTA
  1. [...](https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver17)
  2. ...
