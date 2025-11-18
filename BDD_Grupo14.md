@@ -133,8 +133,6 @@ Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos.
 ...
 
 # CAPÍTULO V: CONCLUSIONES
-CAPÍTULO V: CONCLUSIONES
-
 En conclusión, el proyecto cumplió su objetivo de diseñar el modelo relacional "StudIA". Se creó una base de datos sólida que garantiza la integridad y escalabilidad, resolviendo el problema de la fragmentación de herramientas de estudio.
 
 La investigación técnica demostró que el sistema está optimizado para los cuatro pilares clave de una base de datos moderna:
