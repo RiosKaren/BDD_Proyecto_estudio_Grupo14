@@ -132,3 +132,7 @@ Las transacciones anidadas proporcionan un modelo más flexible para manejar ope
 La implementación correcta de transacciones, junto con un manejo robusto de errores, es fundamental para desarrollar aplicaciones de base de datos confiables y mantenibles.
 
 
+## Referencias
+- Doucet, A., Gançarski, S., Leguizamo, V., León, C., & Rukoz, M. (2001). Un prototipo de manejador de transacciones anidadas con restricciones de integridad.
+- https://learn.microsoft.com/es-es/sql/t-sql/language-elements/rollback-transaction-transact-sql?view=sql-server-ver17
+
