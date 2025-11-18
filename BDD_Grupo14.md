@@ -65,13 +65,27 @@ El alcance de esta primera entrega se limita al diseño y construcción del mode
 
 # CAPÍTULO III: METODOLOGÍA SEGUIDA 
 
- **a) Cómo se realizó el Trabajo Práctico**
-...
+ CAPÍTULO III: METODOLOGÍA SEGUIDA
 
- **b) Herramientas (Instrumentos y procedimientos)**
-...
+Para la realización del proyecto, se siguió una metodología estructurada en las siguientes fases:
 
+1. Análisis de Requerimientos: Se identificó la problemática central: la fragmentación de herramientas que usan los estudiantes. Se plantearon los objetivos de unificar la gestión de materias, apuntes, flashcards, exámenes y seguimiento de progreso en un solo sistema.
 
+2. Diseño de la Base de Datos: Se crearon los modelos conceptual y relacional de la base de datos. Se definieron las entidades principales (Usuario, Materia, Apunte, Flashcard, Examen, Progreso, Pomodoro y TipoUsuario) y se establecieron sus relaciones mediante claves primarias y foráneas.
+
+3. Diccionario de Datos: Se documentó formalmente cada tabla y sus columnas en un diccionario de datos. Este documento detalla los tipos de datos (ej. correo como varchar(150)), su significado (Contraseña encriptada) y las restricciones aplicadas.
+
+4. Creación e Implementación en SQL Server Se implementó la base de datos en SQL Server, ejecutando el script_ddl_proyecto.sql para crear la estructura de tablas y sus restricciones de integridad referencial. Posteriormente, se realizó una carga inicial de datos (script_insert_proyecto.sql) para poblar la base de datos con un conjunto de usuarios, materias y apuntes representativos para las pruebas funcionales.
+
+5. Investigación y Demostración Técnica: El núcleo del trabajo consistió en la investigación y aplicación práctica de cuatro conceptos avanzados de SQL Server, donde cada integrante desarrolló un informe y un script de prueba:
+
+    Procedimientos y Funciones Almacenadas: Se desarrollaron para encapsular la lógica de negocio, reducir el tráfico de red y crear funciones reutilizables.
+
+    Manejo de Transacciones: Se implementó un escenario (registrar un examen, pomodoro y progreso) bajo una transacción con TRY...CATCH y ROLLBACK para garantizar la atomicidad (el principio de "todo o nada") y mantener la integridad de los datos.
+
+    Manejo de tipos de datos JSON: Se exploró la flexibilidad de almacenar datos semi-estructurados (JSON) en una columna NVARCHAR(MAX), aplicando una CONSTRAINT CHECK (ISJSON(contenido) = 1) y consultando sus datos internos con JSON_VALUE y JSON_QUERY.
+
+    Optimización de Consultas con Índices: Se realizó una prueba de carga masiva (WHILE loop) para insertar 2 millones de registros en la tabla Apunte. Se demostró la diferencia crítica de rendimiento entre un "Clustered Index Scan" (2 millones de filas leídas) y un "Index Seek" (1 fila leída) tras crear un índice no agrupado.
 # CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 
 ### Diagrama relacional
 ![Diagrama_relacional](doc/image_relational.png)
