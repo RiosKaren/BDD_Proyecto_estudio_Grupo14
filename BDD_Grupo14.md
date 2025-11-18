@@ -136,10 +136,13 @@ Acceso al documento [PDF](doc/diccionario_datos.pdf) del diccionario de datos.
 En conclusión, el proyecto cumplió su objetivo de diseñar el modelo relacional "StudIA". Se creó una base de datos sólida que garantiza la integridad y escalabilidad, resolviendo el problema de la fragmentación de herramientas de estudio.
 
 La investigación técnica demostró que el sistema está optimizado para los cuatro pilares clave de una base de datos moderna:
-     1. Rendimiento: Con índices, logrando reducir consultas de 2 millones de filas leídas a solo 1 (Index Scan vs. Index Seek).
-     2. Integridad: Con transacciones (ACID), asegurando que operaciones complejas (como registrar un examen) sean de "todo o nada" mediante el uso de ROLLBACK ante errores.
-     3. Eficiencia: Con procedimientos almacenados, que encapsulan la lógica (ej. SP_InsertarApunte), reducen el tráfico de red y aumentan la seguridad.
-     4. Flexibilidad: Con soporte JSON, permitiendo guardar y consultar (JSON_VALUE) datos semi-estructurados dentro del modelo relacional, combinando lo mejor de ambos mundos.
+1. Rendimiento: Con índices, logrando reducir consultas de 2 millones de filas leídas a solo 1 (Index Scan vs. Index Seek).
+     
+2. Integridad: Con transacciones (ACID), asegurando que operaciones complejas (como registrar un examen) sean de "todo o nada" mediante el uso de ROLLBACK ante errores.
+     
+3. Eficiencia: Con procedimientos almacenados, que encapsulan la lógica (ej. SP_InsertarApunte), reducen el tráfico de red y aumentan la seguridad.
+     
+4. Flexibilidad: Con soporte JSON, permitiendo guardar y consultar (JSON_VALUE) datos semi-estructurados dentro del modelo relacional, combinando lo mejor de ambos mundos.
      
 El resultado es una base de datos robusta, escalable y lista para una implementación real.
 
